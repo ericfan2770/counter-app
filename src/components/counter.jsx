@@ -3,49 +3,37 @@ import React, { Component } from "react";
 class Counter extends Component {
   // special property, state contains any data that the component needs
   state = {
-    count: 0,
-    // tags: ["tag1", "tag2", "tag3"]
-    tags: []
+    count: 0
   };
 
-  renderTags() {
-    if (this.state.tags.length === 0) return "There are no tags!";
-
-    return (
-      <ul>
-        {this.state.tags.map(tag => (
-          <li key={tag}>{tag}</li>
-        ))}
-      </ul>
-    );
+  handleIncrement() {
+    console.log("Increment Clicked", this);
   }
-
-  //   styles = {
-  //     fontSize: 10,
-  //     fontWeight: "bold"
-  //   };
 
   render() {
     return (
       <React.Fragment>
-        {this.state.tags.length === 0 && "Please create a new tag!"}
-        {/* <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
-        <button className="btn btn-secondary btn-sm">Increment</button> */
-        this.renderTags()}
+        <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
+        <button
+          onClick={this.handleIncrement}
+          className="btn btn-secondary btn-sm"
+        >
+          Increment
+        </button>
       </React.Fragment>
     );
   }
 
-  //   getBadgeClasses() {
-  //     let classes = "badge m-2 badge-";
-  //     classes += this.state.count === 0 ? "warning" : "primary";
-  //     return classes;
-  //   }
+  getBadgeClasses() {
+    let classes = "badge m-2 badge-";
+    classes += this.state.count === 0 ? "warning" : "primary";
+    return classes;
+  }
 
-  //   formatCount() {
-  //     const { count } = this.state;
-  //     return count === 0 ? "Zero" : count;
-  //   }
+  formatCount() {
+    const { count } = this.state;
+    return count === 0 ? "Zero" : count;
+  }
 }
 
 export default Counter;
