@@ -11,8 +11,10 @@ class Counters extends Component {
     ]
   };
 
-  handleDelete = () => {
-    console.log("event Handler Called");
+  handleDelete = counterId => {
+    // console.log("Event Handler Called", counterId);
+    const counters = this.state.counters.filter(c => c.id !== counterId);
+    this.setState({ counters });
   };
 
   render() {
@@ -20,10 +22,9 @@ class Counters extends Component {
       <React.Fragment>
         {this.state.counters.map(counter => (
           <Counter
-            key={counter.id}
+            key={counter.id} // used internally by React, can't be read
             onDelete={this.handleDelete}
-            value={counter.value}
-            id={counter.id}
+            counter={counter}
           />
         ))}
       </React.Fragment>
