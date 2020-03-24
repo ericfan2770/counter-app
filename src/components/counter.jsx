@@ -6,6 +6,15 @@ class Counter extends Component {
   //   value: this.props.counter.value
   // };
 
+  // Decide whether we should make an Ajax call to get new data based on changes in props and state objects
+  componentDidUpdate(prevProps, prevState) {
+    console.log('prevProps', prevProps);
+    console.log('prevState', prevState);
+    if (prevProps.counter.values !== this.props.counter.value) {
+      // Ajax call and get new data from the server
+    }
+  }
+
   render() {
     console.log("Counter - Rendered");
 
